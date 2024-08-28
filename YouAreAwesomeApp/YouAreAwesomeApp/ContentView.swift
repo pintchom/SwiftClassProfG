@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var messageString:String = "You Are Awesome!"
     var body: some View {
         VStack {
-            Image(systemName: "swift")
-                .resizable()
-                .scaledToFit()
-                .foregroundStyle(.orange)
-            Text("You Are Awesome!")
+            Text(messageString)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundStyle(.red)
                 .italic()
                 .padding()
+            Button("Press Me") {
+                messageString = "You Are Great!"
+            }
         }
-        .padding()
     }
 }
 
