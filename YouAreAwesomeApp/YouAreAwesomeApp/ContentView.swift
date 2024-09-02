@@ -8,56 +8,52 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var messageString: String = "When the genuis bar needs help, they call you!"
+    @State private var messageString: String = "Namaste"
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                Spacer()
-                Group {
-                    Text("hi")
-                    Text("hi")
-                    Text("hi")
-                    Text("hi")
-                    Text("hi")
-                }
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                
-                Group {
-                    Text(messageString)
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .minimumScaleFactor(0.5)
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(.red)
-                        .frame(height: 150)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                    
-                    Spacer()
-                    Divider()
-                        .background(.black)
-                        .padding()
-                        .frame(width: 150.0)
-                    Rectangle()
-                        .fill(.indigo)
-                        .frame(width: geometry.size.width*(0.5), height: 1)
-                }
-                HStack {
-                    Button("Awesome") {
-                        messageString = "You Are Awesome!"
-                    }
-                    .buttonStyle(.borderedProminent)
-                    Spacer()
-                    
-                    Button("Great") {
-                        messageString = "You Are Great!"
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
+        VStack {
+            Spacer()
+            
+            Image(systemName: "speaker.wave.2", variableValue: 0.0)
+                .resizable()
+                .scaledToFit()
+                .symbolRenderingMode(.multicolor)
                 .padding()
+                .background(Color(hue: 0.557, saturation: 0.399, brightness: 0.528))
+                .cornerRadius(30)
+                .shadow(color: .red, radius: 100, x:20, y:20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 30)
+                        .stroke(.red, lineWidth: 1)
+                )
+                .padding()
+            
+            Text(messageString)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .minimumScaleFactor(0.5)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.red)
+                .frame(height: 150)
+                .frame(maxWidth: .infinity)
+                .padding()
+            
+            Spacer()
+            
+            HStack {
+                Button("Awesome") {
+                    messageString = "You Are Awesome!"
+                }
+                .buttonStyle(.borderedProminent)
+                Spacer()
+                
+                Button("Great") {
+                    messageString = "You Are Great!"
+                }
+                .buttonStyle(.borderedProminent)
             }
+            .padding()
         }
+        
     }
 }
 
