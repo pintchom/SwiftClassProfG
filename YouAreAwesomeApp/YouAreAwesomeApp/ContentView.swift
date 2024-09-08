@@ -41,13 +41,9 @@ struct ContentView: View {
             
             HStack {
                 Button("Show Message") {
-                    let message1 = "You Are Awesome!"
-                    let message2 = "You are Great!"
-                    if messageString == message1 {
-                        messageString = message2
-                    } else {
-                        messageString = message1
-                    }
+                    let message1 = "1"
+                    let message2 = "2"
+                    messageString = (messageString == message1 ? message2 : message1)
                 }
                 .buttonStyle(.borderedProminent)
             }
