@@ -11,6 +11,8 @@ struct ContentView: View {
     @State private var messageString: String = ""
     @State private var imageString: String = ""
     @State private var imageNumber: Int = -1
+    @State private var messageNumber: Int = -1
+
     let messages = ["1", "2", "3", "4"]
     var body: some View {
         VStack {
@@ -32,12 +34,18 @@ struct ContentView: View {
             
             HStack {
                 Button("Next Image") {
-                    let prev = imageNumber
-                    while imageNumber == prev {
+                    let lastImageNumber = imageNumber
+                    let lastMessageNumber = messageNumber
+                    repeat {
                         imageNumber = Int.random(in: 0...9)
-                    }
+                    } while imageNumber == lastImageNumber
+                    
+                    repeat {
+                        messageNumber = Int.random(in: 0...3)
+                    } while lastMessageNumber == messageNumber
+                    
                     imageString = "image\(imageNumber)"
-                    messageString = messages[imageNumber%4]
+                    messageString = messages[messageNumber]
                 }
                 .buttonStyle(.borderedProminent)
             }
