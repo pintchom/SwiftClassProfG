@@ -32,8 +32,10 @@ struct ContentView: View {
             
             HStack {
                 Button("Next Image") {
-                    imageNumber += 1
-                    imageNumber = imageNumber%9
+                    let prev = imageNumber
+                    while imageNumber == prev {
+                        imageNumber = Int.random(in: 0...9)
+                    }
                     imageString = "image\(imageNumber)"
                     messageString = messages[imageNumber%4]
                 }
