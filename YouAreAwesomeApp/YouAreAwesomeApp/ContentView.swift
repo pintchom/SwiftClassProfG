@@ -16,7 +16,7 @@ struct ContentView: View {
     @State private var soundNumber: Int = -1
     @State private var audioPlayer: AVAudioPlayer! // implicit unwrapping optional
     let messages = ["1", "2", "3", "4"]
-    
+    @State private var soundIsOn: Bool = true
     
     
     var body: some View {
@@ -39,6 +39,15 @@ struct ContentView: View {
             Spacer()
             
             HStack {
+                Text("Sound on:")
+                Toggle("", isOn: $soundIsOn)
+                    .labelsHidden()
+                    .onChange(of: soundIsOn) { _, _ in
+                        if (audioPlayer != nil) && audioPlayer.isPlaying {
+                            audioPlayer.stop()
+                        }
+                    }
+                Spacer()
                 Button("Next Image") {
                     imageNumber = nonRepeatingRandom(lastNumber: imageNumber, upperBound: 9)
                     messageNumber = nonRepeatingRandom(lastNumber: messageNumber, upperBound: messages.count-1)
@@ -47,9 +56,12 @@ struct ContentView: View {
                     //audio
                     soundNumber = nonRepeatingRandom(lastNumber: soundNumber, upperBound: 5)
                     let soundName = "sound\(soundNumber)"
-                    playSound(soundName: soundName)
+                    if soundIsOn {
+                        playSound(soundName: soundName)
+                    }
                 }
                 .buttonStyle(.borderedProminent)
+                
             }
             .padding()
         }
