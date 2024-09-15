@@ -71,3 +71,20 @@ print()
 print("Micheal earned a: \(finalGrades(score: michaelScore))")
 print("Pam earned a: \(finalGrades(score: pamScore))")
 
+//function overloading
+func hello(to name: String) {
+    print("Hello, \(name)")
+}
+func hello(name: String, title: String) {
+    print("Hello, \(title) \(name)")
+}
+hello(to: "Max")
+hello(name: "Max", title: "Mr.")
+
+//func averageTwoNumber(num1: Double, num2: Double) -> Double {
+//    return (num1 + num2)/2
+//}
+func averageTwoNumber(_ num1: Double, _ num2: Double) -> Double {
+    return (num1 + num2)/2
+}
+print(averageTwoNumber(3, 5))
