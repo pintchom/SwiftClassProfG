@@ -24,7 +24,14 @@ struct ContentView: View {
             Spacer()
             Text(messageString)
                 .font(.largeTitle)
-                .foregroundStyle(Color("Maroon"))
+                .fontWeight(.heavy)
+                .minimumScaleFactor(0.5)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.red)
+                .frame(height: 150)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .animation(.easeInOut(duration: 0.15), value: messageString)
             
             Spacer()
             Image(imageString)
@@ -33,6 +40,7 @@ struct ContentView: View {
                 .cornerRadius(30)
                 .shadow(radius: 30)
                 .padding()
+                .animation(.easeInOut(duration: 0.15), value: messageString)
             Spacer()
             
             
@@ -47,6 +55,7 @@ struct ContentView: View {
                             audioPlayer.stop()
                         }
                     }
+//                    .tint(.indigo)
                 Spacer()
                 Button("Next Image") {
                     imageNumber = nonRepeatingRandom(lastNumber: imageNumber, upperBound: 9)
@@ -61,8 +70,10 @@ struct ContentView: View {
                     }
                 }
                 .buttonStyle(.borderedProminent)
+//                .tint(.indigo)
                 
             }
+            .tint(.accentColor)
             .padding()
         }
     }
