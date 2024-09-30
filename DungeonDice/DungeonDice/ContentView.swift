@@ -29,16 +29,9 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geo in
             VStack {
-                Text("Dungeon Dice")
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                    .foregroundColor(.red)
+                titleView
                 Spacer()
-                Text(resultMessage)
-                    .font(.largeTitle)
-                    .fontWeight(.medium)
-                    .multilineTextAlignment(.center)
-                    .frame(height: 150)
+                resultMessageView
                 Spacer()
                 
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: buttonWidth), spacing: spacing)]) {
@@ -61,51 +54,18 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     .tint(.red)
                 }
-                //            Group {
-                //                HStack {
-                //                    Button("\(Dice.four.rawValue)-sided") {
-                //                        resultMessage = "You rolled a \(Dice.four.roll()) on a \(Dice.four.rawValue)-sided dice"
-                //                    }
-                //                    Spacer()
-                //                    Button("\(Dice.six.rawValue)-sided") {
-                //                        resultMessage = "You rolled a \(Dice.six.roll()) on a \(Dice.six.rawValue)-sided dice"
-                //                    }
-                //                    Spacer()
-                //                    Button("\(Dice.eight.rawValue)-sided") {
-                //                        resultMessage = "You rolled a \(Dice.eight.roll()) on a \(Dice.eight.rawValue)-sided dice"
-                //                    }
-                //                }
-                //                HStack {
-                //                    Button("\(Dice.ten.rawValue)-sided") {
-                //                        resultMessage = "You rolled a \(Dice.ten.roll()) on a \(Dice.ten.rawValue)-sided dice"
-                //                    }
-                //                    Spacer()
-                //                    Button("\(Dice.twelve.rawValue)-sided") {
-                //                        resultMessage = "You rolled a \(Dice.twelve.roll()) on a \(Dice.twelve.rawValue)-sided dice"
-                //                    }
-                //                    Spacer()
-                //                    Button("\(Dice.twenty.rawValue)-sided") {
-                //                        resultMessage = "You rolled a \(Dice.twenty.roll()) on a \(Dice.twenty.rawValue)-sided dice"
-                //                    }
-                //                }
-                //                Button("\(Dice.hundred.rawValue)-sided") {
-                //                    resultMessage = "You rolled a \(Dice.hundred.roll()) on a \(Dice.hundred.rawValue)-sided dice"
-                //                }
-                //            }
-                //            .buttonStyle(.borderedProminent)
-                //            .tint(.red)
             }
             .padding()
             .onChange(of: geo.size.width, perform: { newValue in
-                arrangeGridItems(geo: geo)
+                arrangeGridItems(deviceWidth: geo.size.width)
             })
             .onAppear {
-                arrangeGridItems(geo: geo)
+                arrangeGridItems(deviceWidth: geo.size.width)
             }
         }
     }
-    func arrangeGridItems(geo: GeometryProxy) {
-        var screenWidth = geo.size.width - horizontalPadding*2
+    func arrangeGridItems(deviceWidth: CGFloat) {
+        var screenWidth = deviceWidth - horizontalPadding*2
         if Dice.allCases.count > 1 {
             screenWidth += spacing
         }
@@ -114,6 +74,25 @@ struct ContentView: View {
     }
 }
 
+extension ContentView {
+    private var titleView: some View {
+        Text("Dungeon Dice")
+            .font(.largeTitle)
+            .fontWeight(.black)
+            .foregroundColor(.red)
+            .minimumScaleFactor(0.5)
+            .lineLimit(1)
+    }
+    private var resultMessageView: some View {
+        Text(resultMessage)
+            .font(.largeTitle)
+            .fontWeight(.medium)
+            .multilineTextAlignment(.center)
+            .frame(height: 150)
+    }
+}
+
 #Preview {
     ContentView()
 }
+
