@@ -12,17 +12,23 @@ struct ContentView: View {
 //        GridItem(.fixed(100)),
 //        GridItem(.fixed(100)),
 //        GridItem(.fixed(100))
-        GridItem(.flexible(maximum: 100)),
-        GridItem(.flexible(maximum: 200))
+        GridItem(.flexible(maximum: 500)),
+        GridItem(.flexible(maximum: 500))
     ]
     var body: some View {
-        ScrollView(.horizontal) {
-            LazyHGrid (rows: columns) {
+        ScrollView(.vertical) {
+            LazyVGrid (columns: columns) {
                 ForEach(0..<1000) { i in
                     let _ = print(i)
                     RedAndCyanView()
                 }
             }
+//            LazyHGrid (rows: columns) {
+//                ForEach(0..<1000) { i in
+//                    let _ = print(i)
+//                    RedAndCyanView()
+//                }
+//            }
         }
         .padding()
     }
