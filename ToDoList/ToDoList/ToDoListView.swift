@@ -16,13 +16,41 @@ struct ToDoListView: View {
         NavigationStack {
             List {
                 ForEach(toDos) { toDo in
-                    NavigationLink {
-                        DetailView(toDo: toDo)
-                    } label: {
-                        Text(toDo.item)
+                    HStack {
+                        Image(systemName: toDo.isCompleted ? "checkmark.rectangle" : "rectangle")
+                            .onTapGesture {
+                                toDo.isCompleted.toggle()
+                                modelContext.insert(toDo)
+                                guard let _ = try? modelContext.save() else {
+                                    print("😡 Save didnt work")
+                                    return
+                                }
+                            }
+                        
+                        NavigationLink {
+                            DetailView(toDo: toDo)
+                        } label: {
+                            Text(toDo.item)
+                        }
+                        .swipeActions {
+                            Button("Delete", role: .destructive) {
+                                modelContext.delete(toDo)
+                                guard let _ = try? modelContext.save() else {
+                                    print("😡 Save didnt work")
+                                    return
+                                }
+                            }
+                        }
                     }
                     .font(.title2)
                 }
+//                .onDelete { indexSet in
+//                    indexSet.forEach({modelContext.delete(toDos[$0])})
+//                    guard let _ = try? modelContext.save() else {
+//                        print("😡 Save didnt work")
+//                        return
+//                    }
+//                }
             }
             .navigationTitle("School Year")
             .navigationBarTitleDisplayMode(.automatic)
