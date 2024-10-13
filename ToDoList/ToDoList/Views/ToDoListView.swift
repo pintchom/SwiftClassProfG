@@ -46,6 +46,7 @@ struct ToDoListView: View {
                         .font(.title2)
                         HStack {
                             Text(toDo.dueDate.formatted(date: .abbreviated, time: .shortened))
+                                .foregroundStyle(.secondary)
                             if toDo.reminderIsOn {
                                 Image(systemName: "calendar.badge.clock")
                                     .symbolRenderingMode(.multicolor)
