@@ -6,30 +6,29 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0AF07CE52CC4A4FD00BFB46C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF07CDB2CC4A4FD00BFB46C /* Preview Assets.xcassets */; };
+		0AF07CE62CC4A4FD00BFB46C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF07CDD2CC4A4FD00BFB46C /* Assets.xcassets */; };
+		0AF07CE82CC4A4FD00BFB46C /* CatchEmAllApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF07CDE2CC4A4FD00BFB46C /* CatchEmAllApp.swift */; };
+		0AF07CE92CC4A4FD00BFB46C /* Creature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF07CDF2CC4A4FD00BFB46C /* Creature.swift */; };
+		0AF07CEA2CC4A4FD00BFB46C /* Creatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF07CE02CC4A4FD00BFB46C /* Creatures.swift */; };
+		0AF07CEB2CC4A4FD00BFB46C /* CreaturesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF07CE12CC4A4FD00BFB46C /* CreaturesListView.swift */; };
+		0AF07CEC2CC4A4FD00BFB46C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF07CE22CC4A4FD00BFB46C /* DetailView.swift */; };
+		0AF07CEE2CC4A5B100BFB46C /* CreatureDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF07CED2CC4A5B100BFB46C /* CreatureDetail.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		0AF07CC02CC49CD700BFB46C /* CatchEmAll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatchEmAll.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AF07CDB2CC4A4FD00BFB46C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0AF07CDD2CC4A4FD00BFB46C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0AF07CDE2CC4A4FD00BFB46C /* CatchEmAllApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchEmAllApp.swift; sourceTree = "<group>"; };
+		0AF07CDF2CC4A4FD00BFB46C /* Creature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creature.swift; sourceTree = "<group>"; };
+		0AF07CE02CC4A4FD00BFB46C /* Creatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creatures.swift; sourceTree = "<group>"; };
+		0AF07CE12CC4A4FD00BFB46C /* CreaturesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreaturesListView.swift; sourceTree = "<group>"; };
+		0AF07CE22CC4A4FD00BFB46C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		0AF07CE32CC4A4FD00BFB46C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AF07CED2CC4A5B100BFB46C /* CreatureDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		0AF07CD22CC49CFA00BFB46C /* Exceptions for "CatchEmAll" folder in "CatchEmAll" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 0AF07CBF2CC49CD700BFB46C /* CatchEmAll */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		0AF07CC22CC49CD700BFB46C /* CatchEmAll */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				0AF07CD22CC49CFA00BFB46C /* Exceptions for "CatchEmAll" folder in "CatchEmAll" target */,
-			);
-			path = CatchEmAll;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0AF07CBD2CC49CD700BFB46C /* Frameworks */ = {
@@ -45,7 +44,7 @@
 		0AF07CB72CC49CD700BFB46C = {
 			isa = PBXGroup;
 			children = (
-				0AF07CC22CC49CD700BFB46C /* CatchEmAll */,
+				0AF07CE42CC4A4FD00BFB46C /* CatchEmAll */,
 				0AF07CC12CC49CD700BFB46C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +55,30 @@
 				0AF07CC02CC49CD700BFB46C /* CatchEmAll.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0AF07CDC2CC4A4FD00BFB46C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0AF07CDB2CC4A4FD00BFB46C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0AF07CE42CC4A4FD00BFB46C /* CatchEmAll */ = {
+			isa = PBXGroup;
+			children = (
+				0AF07CDC2CC4A4FD00BFB46C /* Preview Content */,
+				0AF07CDD2CC4A4FD00BFB46C /* Assets.xcassets */,
+				0AF07CDE2CC4A4FD00BFB46C /* CatchEmAllApp.swift */,
+				0AF07CDF2CC4A4FD00BFB46C /* Creature.swift */,
+				0AF07CE02CC4A4FD00BFB46C /* Creatures.swift */,
+				0AF07CED2CC4A5B100BFB46C /* CreatureDetail.swift */,
+				0AF07CE12CC4A4FD00BFB46C /* CreaturesListView.swift */,
+				0AF07CE22CC4A4FD00BFB46C /* DetailView.swift */,
+				0AF07CE32CC4A4FD00BFB46C /* Info.plist */,
+			);
+			path = CatchEmAll;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,9 +95,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				0AF07CC22CC49CD700BFB46C /* CatchEmAll */,
 			);
 			name = CatchEmAll;
 			packageProductDependencies = (
@@ -122,6 +142,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AF07CE52CC4A4FD00BFB46C /* Preview Assets.xcassets in Resources */,
+				0AF07CE62CC4A4FD00BFB46C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +154,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AF07CE82CC4A4FD00BFB46C /* CatchEmAllApp.swift in Sources */,
+				0AF07CEE2CC4A5B100BFB46C /* CreatureDetail.swift in Sources */,
+				0AF07CE92CC4A4FD00BFB46C /* Creature.swift in Sources */,
+				0AF07CEA2CC4A4FD00BFB46C /* Creatures.swift in Sources */,
+				0AF07CEB2CC4A4FD00BFB46C /* CreaturesListView.swift in Sources */,
+				0AF07CEC2CC4A4FD00BFB46C /* DetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
