@@ -17,7 +17,19 @@ class CreatureDetail {
     }
     
     struct Sprite: Codable {
-        var front_default: String
+        var other: Other
+    }
+    
+    struct Other: Codable {
+        var officialArtwork: OfficialArtwork
+        
+        enum CodingKeys: String, CodingKey {
+            case officialArtwork = "official-artwork"
+        }
+    }
+    
+    struct OfficialArtwork: Codable {
+        var front_default: String?
     }
     
     
@@ -40,7 +52,7 @@ class CreatureDetail {
             }
             self.height = returned.height
             self.weight = returned.weight
-            self.imageUrl = returned.sprites.front_default
+            self.imageUrl = returned.sprites.other.officialArtwork.front_default ?? "n/a"
             print("JSON RETURNED! count: \(returned.height), next: \(returned.weight)")
         } catch {
             print("COULD NOT GET DATA FROM URL")
