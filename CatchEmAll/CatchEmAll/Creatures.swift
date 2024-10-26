@@ -49,4 +49,13 @@ class Creatures {
             print("COULD NOT GET DATA FROM URL")
         }
     }
+    
+    func loadAll() async {
+        Task { @MainActor in
+            guard urlstring.hasPrefix("http") else { return }
+
+            await getData()
+            await loadAll()
+        }
+    }
 }
