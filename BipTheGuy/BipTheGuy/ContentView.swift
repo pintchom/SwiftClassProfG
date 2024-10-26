@@ -64,7 +64,6 @@ struct ContentView: View {
         } catch {
             print("ERROR: \(error.localizedDescription) creating audio player")
         }
-                
     }
 }
 
