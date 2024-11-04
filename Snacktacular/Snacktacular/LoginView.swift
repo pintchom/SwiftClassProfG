@@ -19,6 +19,7 @@ struct LoginView: View {
     @State private var showingAlert = false
     @State private var alertMessage = ""
     @State private var buttonDisabled = true
+    @State private var presentSheet = false
     var body: some View {
         VStack {
             Image("logo")
@@ -79,6 +80,15 @@ struct LoginView: View {
         .alert(alertMessage, isPresented: $showingAlert) {
             Button("OK", role: .cancel) {}
         }
+        .onAppear() {
+            if Auth.auth().currentUser != nil {
+                print("Login in successful!")
+                presentSheet = true
+            }
+        }
+        .fullScreenCover(isPresented: $presentSheet) {
+            ListView()
+        }
     }
     
     func enableButtons() {
@@ -95,6 +105,7 @@ struct LoginView: View {
                 showingAlert = true
             } else {
                 print("Registration Successful")
+                presentSheet = true
             }
         }
     }
@@ -106,6 +117,7 @@ struct LoginView: View {
                 showingAlert = true
             } else {
                 print("Sign In Successful")
+                presentSheet = true
             }
         }
     }
