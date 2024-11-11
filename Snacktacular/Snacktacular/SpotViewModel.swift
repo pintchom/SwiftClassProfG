@@ -10,7 +10,7 @@ import FirebaseFirestore
 
 @Observable
 class SpotViewModel {
-    func saveSpot(spot: Spot) -> Bool {
+    static func saveSpot(spot: Spot) -> Bool {
         let db = Firestore.firestore()
         if let id = spot.id {
             do {
@@ -29,5 +29,20 @@ class SpotViewModel {
             }
         }
         return true
+    }
+    
+    static func deleteSpot(spot: Spot) {
+        let db = Firestore.firestore()
+        guard let id = spot.id else {
+            print("NO SPOT ID")
+            return
+        }
+        Task {
+            do {
+                try await db.collection("spots").document(id).delete()
+            } catch {
+                print("Could not delete: \(error.localizedDescription)")
+            }
+        }
     }
 }

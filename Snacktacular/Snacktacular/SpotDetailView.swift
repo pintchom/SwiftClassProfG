@@ -10,7 +10,6 @@ import SwiftUI
 struct SpotDetailView: View {
     @State var spot: Spot
     @Environment(\.dismiss) private var dismiss
-    @State var spotVM = SpotViewModel()
     var body: some View {
         VStack {
             Group {
@@ -37,7 +36,7 @@ struct SpotDetailView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("submit") {
-                    let success = spotVM.saveSpot(spot: spot)
+                    let success = SpotViewModel.saveSpot(spot: spot)
                     if success {
                         dismiss()
                     } else {
