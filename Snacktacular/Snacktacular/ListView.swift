@@ -8,13 +8,22 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import FirebaseFirestore
 
 struct ListView: View {
+    @FirestoreQuery(collectionPath: "spots") var spots: [Spot]
     @Environment(\.dismiss) private var dismiss
+    @State private var sheetIsPresented = false
     var body: some View {
         NavigationStack {
-            List {
-                Text("List Items will go here")
+            List(spots) { spot in
+                NavigationLink {
+                    SpotDetailView(spot: spot)
+                } label: {
+                    Text(spot.name)
+                        .font(.title2)
+                }
+
             }
             .listStyle(.plain)
             .navigationTitle("Snack Spots:")
@@ -32,11 +41,16 @@ struct ListView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        //TODO: Add record here
+                        sheetIsPresented = true
                     } label: {
                         Image(systemName: "plus")
                     }
 
+                }
+            }
+            .sheet(isPresented: $sheetIsPresented) {
+                NavigationStack {
+                    SpotDetailView(spot: Spot())
                 }
             }
         }
