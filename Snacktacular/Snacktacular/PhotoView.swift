@@ -13,7 +13,7 @@ struct PhotoView: View {
     @State private var photo = Photo()
     @State private var data = Data()
     @State private var selectedPhoto: PhotosPickerItem?
-    @State private var pickerIsPresented = true 
+    @State private var pickerIsPresented = true
     @State private var selectedImage = Image(systemName: "photo")
     @Environment(\.dismiss) private var dismiss
     var body: some View {
@@ -23,6 +23,10 @@ struct PhotoView: View {
                 .resizable()
                 .scaledToFit()
             Spacer()
+            
+            TextField("Description", text: $photo.description)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
             Text("by: \(photo.reviewer), on: \(photo.postedOn.formatted(date: .numeric, time: .omitted))")
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
