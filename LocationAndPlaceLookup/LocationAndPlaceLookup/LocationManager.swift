@@ -15,7 +15,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     private var locationManager = CLLocationManager()
     var errorMessage: String?
     var authorizationStatus: CLAuthorizationStatus = .notDetermined
-    
+    var locationUpdated: ((CLLocation) -> Void)?
     override init() {
         super.init()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -40,8 +40,8 @@ extension LocationManager {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let newLocation = locations.last else {return}
         location = newLocation
-        
-//        manager.stopUpdatingLocation()
+        locationUpdated?(newLocation)
+        manager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {

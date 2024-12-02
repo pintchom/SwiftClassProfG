@@ -10,6 +10,7 @@ import MapKit
 
 struct PlaceLookupView: View {
     let locationManager: LocationManager
+    @Binding var selectedPlace: Place?
     @State var placeVM = PlaceViewModel()
     @State private var searchTask: Task<Void, Never>?
     @State private var searchText: String = ""
@@ -17,17 +18,27 @@ struct PlaceLookupView: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationStack {
-            List(placeVM.places) { place in
-                VStack (alignment: .leading) {
-                    Text(place.name)
-                        .font(.title2)
-                    Text(place.address)
-                        .font(.callout)
-                        .foregroundStyle(.secondary)
+            Group {
+                if searchText.isEmpty {
+                    ContentUnavailableView("No results", systemImage: "mappin.slash")
+                } else {
+                    List(placeVM.places) { place in
+                        VStack (alignment: .leading) {
+                            Text(place.name)
+                                .font(.title2)
+                            Text(place.address)
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                        }
+                        .onTapGesture {
+                            selectedPlace = place
+                            dismiss()
+                        }
+                        
+                    }
+                    .listStyle(.plain)
                 }
-                
             }
-            .listStyle(.plain)
             .navigationTitle("Location Search")
             .navigationBarTitleDisplayMode(.inline)
             
@@ -70,5 +81,5 @@ struct PlaceLookupView: View {
 }
 
 #Preview {
-    PlaceLookupView(locationManager: LocationManager())
+    PlaceLookupView(locationManager: LocationManager(), selectedPlace: .constant(Place(mapItem: MKMapItem())))
 }
