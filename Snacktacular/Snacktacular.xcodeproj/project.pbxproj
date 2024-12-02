@@ -20,6 +20,8 @@
 		0A4873502CE17E62003286E8 /* SpotDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A48734F2CE17E62003286E8 /* SpotDetailView.swift */; };
 		0A4873522CE17F87003286E8 /* SpotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4873512CE17F87003286E8 /* SpotViewModel.swift */; };
 		0AAF28712CFD49EB00EE713A /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF28702CFD49EB00EE713A /* PhotoView.swift */; };
+		0AAF28732CFD4F4E00EE713A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF28722CFD4F4E00EE713A /* Photo.swift */; };
+		0AAF28752CFD4F9200EE713A /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF28742CFD4F9200EE713A /* PhotoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		0A48734F2CE17E62003286E8 /* SpotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailView.swift; sourceTree = "<group>"; };
 		0A4873512CE17F87003286E8 /* SpotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotViewModel.swift; sourceTree = "<group>"; };
 		0AAF28702CFD49EB00EE713A /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		0AAF28722CFD4F4E00EE713A /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		0AAF28742CFD4F9200EE713A /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +90,10 @@
 				0A0020A12CD91AEB000CA45A /* LoginView.swift */,
 				0A0020AC2CD921F2000CA45A /* ListView.swift */,
 				0A48734D2CE17E22003286E8 /* Spot.swift */,
+				0AAF28722CFD4F4E00EE713A /* Photo.swift */,
 				0A48734F2CE17E62003286E8 /* SpotDetailView.swift */,
 				0A4873512CE17F87003286E8 /* SpotViewModel.swift */,
+				0AAF28742CFD4F9200EE713A /* PhotoViewModel.swift */,
 				0AAF28702CFD49EB00EE713A /* PhotoView.swift */,
 			);
 			path = Snacktacular;
@@ -173,9 +179,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AAF28732CFD4F4E00EE713A /* Photo.swift in Sources */,
 				0A4873502CE17E62003286E8 /* SpotDetailView.swift in Sources */,
 				0A0020AA2CD91AEB000CA45A /* LoginView.swift in Sources */,
 				0AAF28712CFD49EB00EE713A /* PhotoView.swift in Sources */,
+				0AAF28752CFD4F9200EE713A /* PhotoViewModel.swift in Sources */,
 				0A4873522CE17F87003286E8 /* SpotViewModel.swift in Sources */,
 				0A0020AB2CD91AEB000CA45A /* SnacktacularApp.swift in Sources */,
 				0A0020AD2CD921F2000CA45A /* ListView.swift in Sources */,
