@@ -9,14 +9,19 @@ import SwiftUI
 
 struct SpotDetailView: View {
     @State var spot: Spot
+    @State private var photoSheetIsPresented = false
+    @State private var showingAlert = false
+    @State private var alertMessage = "Cannot add a photo until you save a spot"
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         VStack {
             Group {
                 TextField("name", text: $spot.name)
                     .font(.title)
+                    .autocorrectionDisabled()
                 TextField("address", text: $spot.address)
                     .font(.title2)
+                    .autocorrectionDisabled()
             }
             .textFieldStyle(.roundedBorder)
             .overlay {
@@ -25,6 +30,22 @@ struct SpotDetailView: View {
                 
             }
             .padding(.horizontal)
+            
+            Button {
+                if spot.id == nil {
+                    showingAlert.toggle()
+                } else {
+                    photoSheetIsPresented.toggle()
+                }
+            } label: {
+                Image(systemName: "camera.fill")
+                Text("Photo")
+            }
+            .bold()
+            .buttonStyle(.borderedProminent)
+            .tint(.snack)
+
+            
             Spacer()
         }
         .navigationBarBackButtonHidden()
@@ -36,14 +57,38 @@ struct SpotDetailView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("submit") {
-                    let success = SpotViewModel.saveSpot(spot: spot)
-                    if success {
-                        dismiss()
-                    } else {
-                        print("Save Failed")
-                    }
+                    saveSpot()
+                    dismiss()
                 }
             }
+        }
+        .alert(alertMessage, isPresented: $showingAlert) {
+            Button("Save") {
+                // return spot ID after saving new spot
+                Task {
+                    guard let id = await SpotViewModel.saveSpot(spot: spot) else {
+                        print("ERROR SAVING SPOT")
+                        return
+                    }
+                    spot.id = id
+                    print(id)
+                    photoSheetIsPresented.toggle()
+                }
+            }
+            Button("Cancel", role: .cancel) {}
+        }
+        .fullScreenCover(isPresented: $photoSheetIsPresented) {
+            PhotoView(spot: spot)
+        }
+    }
+    
+    func saveSpot() {
+        Task {
+            guard let id = await SpotViewModel.saveSpot(spot: spot) else {
+                print("Error saving")
+                return
+            }
+            print(id)
         }
     }
     
